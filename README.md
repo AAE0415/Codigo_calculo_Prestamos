@@ -29,7 +29,7 @@ EjemploConJSON/
 │       └── utils.js
 │
 ├── FrontEnd/
-│   ├── index.html
+│   ├── index.html 
 │   └── scripts/
 │       └── main.js
 │

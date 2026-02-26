@@ -6,10 +6,12 @@ form.addEventListener('submit', async (e) => {
 
     const data = {
         nombre: document.getElementById('nombre').value,
-        prestamo: parseFloat(document.getElementById('prestamo').value),
-        meses: parseInt(document.getElementById('meses').value),
-        interes: parseFloat(document.getElementById('interes').value)
+        peso: parseFloat(document.getElementById('peso').value),
+        distancia: parseFloat(document.getElementById('distancia').value),
+        descuento: document.getElementById('descuento').value
     };
+
+    
 
     const response = await fetch('http://localhost:3000/prestamo', {
         method: 'POST',
@@ -19,5 +21,16 @@ form.addEventListener('submit', async (e) => {
 
     const result = await response.json();
 
-    respuesta.value = `${result.nombre} – $${result.cuota} – $${result.prestamo} – ${result.meses} meses – interés ${result.interes}%`;
+    respuesta.value = `Nombre: ${result.nombre}
+Peso: ${result.peso} Kg
+Distancia: ${result.distancia} Km
+Descuento: ${result.descuento || 'Ninguno'}
+Costo por Peso: $${result.costoPeso}
+Costo por Distancia: $${result.costoDistancia}
+Subtotal: $${result.subtotal}
+Subtotal con Descuento: $${result.subtotalDescuento}
+Impuesto: $${result.impuesto}
+Total a Pagar: $${result.total}`;
 });
+
+

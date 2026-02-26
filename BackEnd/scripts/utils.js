@@ -3,10 +3,34 @@
 * Cálculo de cuota de préstamo
 */
 
-function calcularCuota(prestamo, meses, interes) {
-    const cuota = prestamo * ((Math.pow(1 + interes, meses) * interes) /
-                  (Math.pow(1 + interes, meses) - 1));
-    return cuota;
+function CalcularcostoPeso(peso) {
+    return peso * 2.0;
 }
 
-module.exports = { calcularCuota };
+function CalcularcostoDistancia(distancia) {
+    return distancia * 0.05;
+}
+
+function CalcularSubtotal(costoPeso, costoDistancia) {
+    return costoPeso + costoDistancia;
+}
+
+function CalcularDescuento(descuento, subtotal) {
+    if (descuento === 'WEB10') {
+        return subtotal * 0.9;
+    } else if (descuento === 'WEB20') {
+        return subtotal * 0.8;
+    }
+    return subtotal;
+}
+
+function CalcularImpuesto(subtotalDescuento) {
+    return subtotalDescuento * 0.08;
+}
+
+function CalcularTotal(subtotalDescuento, impuesto) {
+    return subtotalDescuento + impuesto; 
+}
+
+
+module.exports = { CalcularcostoPeso, CalcularcostoDistancia, CalcularSubtotal, CalcularDescuento, CalcularImpuesto, CalcularTotal };
